@@ -208,21 +208,24 @@
     font-weight: 700;
   }
   .field-group input {
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    background: #F0F4F8;
+    border: 1.5px solid rgba(0,188,212,0.3);
     border-radius: 10px;
     padding: 0.85rem 1rem;
-    color: var(--text);
+    color: #1A2340 !important;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.95rem;
     outline: none;
     transition: border-color 0.2s, background 0.2s;
+    -webkit-text-fill-color: #1A2340;
   }
   .field-group input:focus {
     border-color: var(--cyan);
-    background: rgba(0,188,212,0.04);
+    background: #E8F8FB;
+    color: #1A2340 !important;
+    -webkit-text-fill-color: #1A2340;
   }
-  .field-group input::placeholder { color: rgba(107,122,153,0.5); }
+  .field-group input::placeholder { color: rgba(45,47,107,0.4); }
 
   .btn-login {
     margin-top: 0.5rem;
@@ -1454,20 +1457,27 @@ function renderApp() {
   renderItinerary();
   const myVouchers = appData.vouchers.filter(v =>
     v.email_cliente === currentUser.email
-  );
+  ).sort((a, b) => (a.fecha || '').localeCompare(b.fecha || ''));
+
+  // Agrupar por destino manteniendo orden cronológico
   const destMap = {};
+  const destOrder = [];
   myVouchers.forEach(v => {
-    if (!destMap[v.destino]) destMap[v.destino] = [];
+    if (!destMap[v.destino]) {
+      destMap[v.destino] = [];
+      destOrder.push(v.destino);
+    }
     destMap[v.destino].push(v);
   });
 
   const container = document.getElementById('destinations-container');
   container.innerHTML = '';
 
-  if (Object.keys(destMap).length === 0) {
+  if (destOrder.length === 0) {
     container.innerHTML = `<div class="empty-state"><div class="icon">🗺️</div><p>No hay vouchers cargados todavía</p></div>`;
   } else {
-    Object.entries(destMap).forEach(([dest, vouchers]) => {
+    destOrder.forEach(dest => {
+      const vouchers = destMap[dest];
       const card = document.createElement('div');
       card.className = 'destination-card';
 
@@ -1500,27 +1510,34 @@ function renderApp() {
 
   // Tips
   const myDestinations = Object.keys(destMap);
-  const countryMap = {
+  const cityToCountry = {
     'roma': 'italia', 'florencia': 'italia', 'venecia': 'italia',
-    'milán': 'italia', 'milan': 'italia', 'cerdeña': 'italia', 'sardegna': 'italia',
+    'milán': 'italia', 'milan': 'italia', 'cerdeña': 'italia',
     'costa amalfitana': 'italia', 'lago di como': 'italia',
     'barcelona': 'españa', 'madrid': 'españa', 'ibiza': 'españa',
     'parís': 'francia', 'paris': 'francia', 'niza': 'francia',
     'mónaco': 'mónaco', 'monaco': 'mónaco',
     'londres': 'reino unido',
     'ámsterdam': 'países bajos', 'amsterdam': 'países bajos',
-    'lisboa': 'portugal',
-    'praga': 'república checa'
+    'lisboa': 'portugal', 'praga': 'república checa'
   };
+
+  // Países que el cliente REALMENTE visita
+  const myCountries = [...new Set(
+    myDestinations.map(d => cityToCountry[d.toLowerCase()] || d.toLowerCase())
+  )];
 
   const myTips = appData.consejos.filter(t => {
     const tipDest = (t.destino || '').toLowerCase();
     const tipCiudad = (t.ciudad || '').toLowerCase();
-    return myDestinations.some(d => {
-      const dl = d.toLowerCase();
-      const pais = countryMap[dl] || dl;
-      return dl === tipDest || dl === tipCiudad || pais === tipDest;
-    });
+
+    if (!tipCiudad) {
+      // Consejo general de país: solo si el cliente visita ese país
+      return myCountries.includes(tipDest);
+    } else {
+      // Consejo de ciudad: solo si el cliente visita ESA ciudad exacta
+      return myDestinations.some(d => d.toLowerCase() === tipCiudad || d.toLowerCase() === tipDest);
+    }
   });
 
   const tipsContainer = document.getElementById('tips-container');

@@ -1105,13 +1105,14 @@ const ITINERARY = [
   {
     date: '29 ABR', title: '🏙️ Madrid', emoji: '🏙️',
     blocks: [
-      { title: '🏨 Alojamiento', lines: ['Hotel: Gran Meliá Fénix', 'Noches: 4 (29/04 al 03/05)'] },
       { title: '🚕 Traslado', lines: ['Desde aeropuerto: Taxi / Uber'] },
+      { title: '🏨 Alojamiento', lines: ['Hotel: Gran Meliá Fénix', 'Noches: 4 (29/04 al 03/05)'] },
     ]
   },
   {
     date: '03 MAY', title: '✈️ Madrid → París', emoji: '✈️',
     blocks: [
+      { title: '🚕 Traslado', lines: ['Al Aeropuerto de Madrid: Taxi / Uber'] },
       { title: '✈️ Vuelo', lines: ['➡️ Salida: 16:30 hs – Aeropuerto Adolfo Suárez MAD', '⬅️ Llegada: 18:25 hs – Aeropuerto de París Orly (ORY)'], warning: 'Presentarse 2 hs antes' },
       { title: '🚕 Traslado', lines: ['Al hotel: Taxi / Uber'] },
       { title: '🏨 Alojamiento', lines: ['Hotel: Le Burgundy', 'Noches: 3 (03/05 al 06/05)'] },
@@ -1120,6 +1121,7 @@ const ITINERARY = [
   {
     date: '06 MAY', title: '🚄 París → Niza → Mónaco', emoji: '🚄',
     blocks: [
+      { title: '🚕 Traslado', lines: ['A estación tren París: Taxi / Uber'] },
       { title: '🚄 Tren', lines: ['➡️ Salida: 14:10 hs – Paris Gare de Lyon', '⬅️ Llegada: 20:04 hs – Nice Ville'], warning: 'Presentarse 30 min antes' },
       { title: '🚕 Traslado', lines: ['Niza → Mónaco: Taxi o Uber'] },
       { title: '🏨 Alojamiento', lines: ['Hotel: Hermitage (Mónaco)', 'Noches: 3 (06/05 al 09/05)'] },
@@ -1128,24 +1130,31 @@ const ITINERARY = [
   {
     date: '09 MAY', title: '🚄 Mónaco → Milán', emoji: '🚄',
     blocks: [
-      { title: '🚄 Tramo 1 (regional)', lines: ['➡️ Salida: 13:48 hs – Monaco Monte Carlo', '⬅️ Llegada: 14:18 hs – Ventimiglia', '⚠️ Sin asiento asignado'] },
-      { title: '🚄 Tramo 2', lines: ['➡️ Salida: 15:10 hs – Ventimiglia', '⬅️ Llegada: 18:55 hs – Milano Centrale'], warning: 'Conexión recomendada: 30–45 min' },
+      { title: '🚕 Traslado', lines: ['A estación Monte Carlo: Taxi / Uber'] },
+      { title: '🚄 Tramo 1 – SNCF (sin asiento asignado)', lines: ['➡️ Salida: 13:48 hs – Monaco Monte Carlo', '⬅️ Llegada: 14:18 hs – Ventimiglia'], warning: 'Conexión en Ventimiglia: te bajás → mirás el tablero → vas al otro andén. La estación es chica, no te podés perder.' },
+      { title: '🚄 Tramo 2 – Trenitalia', lines: ['➡️ Salida: 15:10 hs – Ventimiglia', '⬅️ Llegada: 18:55 hs – Milano Centrale'], warning: 'Conexión recomendada: 30–45 min entre tramos' },
+      { title: '🚕 Traslado', lines: ['A hotel: Taxi / Uber'] },
       { title: '🏨 Alojamiento', lines: ['Hotel: Rosa Grand Milano', 'Noches: 2 (09/05 al 11/05)'] },
     ]
   },
   {
     date: '11 MAY', title: '🚄 Milán → Lago di Como', emoji: '🚄',
     blocks: [
+      { title: '🚕 Traslado', lines: ['A estación Milano Centrale: Taxi / Uber'] },
       { title: '🚄 Tren', lines: ['➡️ Salida: 14:20 hs – Milano Centrale', '⬅️ Llegada: 15:24 hs – Varenna Esino'], warning: 'Presentarse 30 min antes' },
-      { title: '⛴️ Ferry', lines: ['➡️ Salida: 15:50 hs – Varenna Ferry Terminal', '⬅️ Llegada: 16:15 hs (aprox) – Menaggio Ferry Terminal'], warning: 'Presentarse 20 min antes' },
+      { title: '🚶 Varenna: tren → ferry', lines: ['👉 Caminable, pero con valijas → mejor taxi'] },
+      { title: '⛴️ Ferry', lines: ['➡️ Salida: 15:50 hs – Varenna Ferry Terminal', '⬅️ Llegada: 16:15 hs (aprox) – Menaggio Ferry Terminal', '⏱️ Duración: 15 min'], warning: 'Presentarse 20 min antes' },
+      { title: '🚶 Menaggio: ferry → hotel', lines: ['👉 Caminá tranquilo, es cerca (300 mts)'] },
       { title: '🏨 Alojamiento', lines: ['Hotel: Grand Victoria Concept (Menaggio)', 'Noches: 2 (11/05 al 13/05)'] },
     ]
   },
   {
     date: '13 MAY', title: '🚗 Como → Cerdeña', emoji: '🚗',
     blocks: [
-      { title: '⛴️ Ferry', lines: ['➡️ Salida: 12:05 hs – Menaggio Ferry Terminal', '⬅️ Llegada: 12:20 hs – Varenna Ferry Terminal'], warning: 'Presentarse 20 min antes' },
+      { title: '⛴️ Ferry', lines: ['➡️ Salida: 12:05 hs – Menaggio Ferry Terminal', '⬅️ Llegada: 12:20 hs – Varenna Ferry Terminal', '⏱️ Duración: 15 min'], warning: 'Presentarse 20 min antes' },
+      { title: '🚶 Varenna: ferry → tren', lines: ['👉 Caminable, pero con valijas → mejor taxi'] },
       { title: '🚄 Tren', lines: ['➡️ Salida: 13:35 hs – Varenna Esino', '⬅️ Llegada: 14:40 hs – Milano Centrale'], warning: 'Presentarse 30 min antes' },
+      { title: '🚕 Traslado', lines: ['Desde Milano Centrale al Aeropuerto Linate: Taxi / Uber'] },
       { title: '✈️ Vuelo', lines: ['➡️ Salida: 17:10 hs – Aeropuerto Milán Linate (LIN)', '⬅️ Llegada: 18:20 hs – Aeropuerto Olbia Costa Smeralda (OLB)'], warning: 'Presentarse 2 hs antes' },
       { title: '🚗 Alquiler de Auto', lines: ['Retiro: 19:00 hs – Aeropuerto de Olbia'], warning: 'Se retira con tanque lleno y se devuelve lleno' },
       { title: '🏨 Alojamiento', lines: ["Hotel: Mangia's Santa Teresa", 'Noches: 4 (13/05 al 17/05)'] },
@@ -1160,18 +1169,49 @@ const ITINERARY = [
     ]
   },
   {
+    date: '18 MAY', title: '⛴️ Sorrento → Capri → Sorrento', emoji: '⛴️',
+    blocks: [
+      { title: '⛴️ Ferry ida', lines: ['➡️ Salida: 11:10 hs – Sorrento', '⬅️ Llegada: Capri', '⏱️ Duración: 20–25 min'] },
+      { title: '⛴️ Ferry regreso', lines: ['➡️ Salida: 17:45 hs – Capri', '⬅️ Llegada: Sorrento', '⏱️ Duración: 20–25 min'] },
+    ]
+  },
+  {
+    date: '19 MAY', title: '⛴️ Sorrento → Positano → Sorrento', emoji: '⛴️',
+    blocks: [
+      { title: '⛴️ Ferry ida', lines: ['➡️ Salida: 11:00 hs – Sorrento', '⬅️ Llegada: Positano', '⏱️ Duración: 1h – 1h15 min'] },
+      { title: '⛴️ Ferry regreso', lines: ['➡️ Salida: 17:45 hs – Positano', '⬅️ Llegada: Sorrento', '⏱️ Duración: 1h – 1h15 min'] },
+    ]
+  },
+  {
+    date: '20 MAY', title: '⛴️ Sorrento → Amalfi → Sorrento', emoji: '⛴️',
+    blocks: [
+      { title: '⛴️ Ferry ida', lines: ['➡️ Salida: 10:30 hs – Sorrento', '⬅️ Llegada: Amalfi', '⏱️ Duración: 1h30 min aprox'] },
+      { title: '⛴️ Ferry regreso', lines: ['➡️ Salida: 17:02 hs – Amalfi', '⬅️ Llegada: Sorrento', '⏱️ Duración: 1h30 min aprox'] },
+    ]
+  },
+  {
     date: '21 MAY', title: '✈️ Sorrento → Ibiza', emoji: '✈️',
     blocks: [
-      { title: '🚗 Transfer privado', lines: ['Sorrento → Aeropuerto de Nápoles', '⏰ Horario: a coordinar'] },
+      { title: '🚗 Transfer privado', lines: ['Sorrento → Aeropuerto de Nápoles', '⏰ Salida: 8:30 hs', '⏱️ Duración estimada: 1h15 – 1h30'] },
       { title: '✈️ Vuelo', lines: ['➡️ Salida: 12:45 hs – Aeropuerto de Nápoles (NAP)', '⬅️ Llegada: 14:55 hs – Aeropuerto de Ibiza (IBZ)'], warning: 'Presentarse 2 hs antes' },
+      { title: '🚕 Traslado', lines: ['Al hotel: Taxi / Uber'] },
       { title: '🏨 Alojamiento', lines: ['Hotel: Bless Ibiza Cala Nova', 'Noches: 5 (21/05 al 26/05)'] },
+    ]
+  },
+  {
+    date: '24 MAY', title: '⛴️ Ibiza → Formentera → Ibiza', emoji: '⛴️',
+    blocks: [
+      { title: '⛴️ Ferry ida', lines: ['➡️ Salida: 11:01 hs – Ibiza', '⬅️ Llegada: Formentera', '⏱️ Duración: 30–35 min'] },
+      { title: '⛴️ Ferry regreso', lines: ['➡️ Salida: 22:15 hs – Formentera', '⬅️ Llegada: Ibiza', '⏱️ Duración: 30–35 min'] },
     ]
   },
   {
     date: '26 MAY', title: '✈️ Ibiza → Madrid', emoji: '✈️',
     blocks: [
+      { title: '🚕 Traslado', lines: ['Al Aeropuerto de Ibiza: Taxi / Uber'] },
       { title: '✈️ Vuelo', lines: ['➡️ Salida: 14:55 hs – Aeropuerto de Ibiza (IBZ)', '⬅️ Llegada: 16:10 hs – Aeropuerto Madrid-Barajas (MAD)'], warning: 'Presentarse 2 hs antes' },
-      { title: '🚕 Traslado', lines: ['Al hotel: Taxi / Uber'] },
+      { title: '🚕 Traslado', lines: ['Al hotel en Madrid: Taxi / Uber'] },
+      { title: '🏨 Alojamiento', lines: ['Hotel: A CONFIRMAR', 'Noches: 2 (26/05 al 28/05)'] },
     ]
   },
 ];
@@ -1459,15 +1499,17 @@ function renderApp() {
     v.email_cliente === currentUser.email
   ).sort((a, b) => (a.fecha || '').localeCompare(b.fecha || ''));
 
-  // Agrupar por destino manteniendo orden cronológico
+  // Agrupar por destino+mes para separar estadías distintas (ej: Madrid inicio vs Madrid final)
   const destMap = {};
   const destOrder = [];
   myVouchers.forEach(v => {
-    if (!destMap[v.destino]) {
-      destMap[v.destino] = [];
-      destOrder.push(v.destino);
+    const mes = (v.fecha || '').substring(0, 7); // AAAA-MM
+    const key = v.destino + '||' + mes;
+    if (!destMap[key]) {
+      destMap[key] = { destino: v.destino, fecha: v.fecha, vouchers: [] };
+      destOrder.push(key);
     }
-    destMap[v.destino].push(v);
+    destMap[key].vouchers.push(v);
   });
 
   const container = document.getElementById('destinations-container');
@@ -1476,8 +1518,9 @@ function renderApp() {
   if (destOrder.length === 0) {
     container.innerHTML = `<div class="empty-state"><div class="icon">🗺️</div><p>No hay vouchers cargados todavía</p></div>`;
   } else {
-    destOrder.forEach(dest => {
-      const vouchers = destMap[dest];
+    destOrder.forEach(key => {
+      const group = destMap[key];
+      const vouchers = group.vouchers;
       const card = document.createElement('div');
       card.className = 'destination-card';
 
@@ -1497,8 +1540,8 @@ function renderApp() {
       card.innerHTML = `
         <div class="dest-header" onclick="toggleDest(this)">
           <div class="dest-info">
-            <h3>📍 ${dest}</h3>
-            <p>${vouchers.length} servicio${vouchers.length !== 1 ? 's' : ''}</p>
+            <h3>📍 ${group.destino}</h3>
+            <p>${vouchers.length} servicio${vouchers.length !== 1 ? 's' : ''} · ${formatDate(group.fecha)}</p>
           </div>
           <div class="dest-badge">▾ Ver</div>
         </div>
@@ -1507,9 +1550,8 @@ function renderApp() {
       container.appendChild(card);
     });
   }
-
-  // Tips
-  const myDestinations = Object.keys(destMap);
+  // Tips — usamos los destinos únicos (sin el mes)
+  const myDestinations = [...new Set(destOrder.map(k => k.split('||')[0]))];
   const cityToCountry = {
     'roma': 'italia', 'florencia': 'italia', 'venecia': 'italia',
     'milán': 'italia', 'milan': 'italia', 'cerdeña': 'italia',
